@@ -10,17 +10,21 @@ ________________________________________________
 ## Main Endpoint page for the API query:
     http://127.0.0.1:5001/
 
+
 ## 1 - Endpoint route for generating a Random Number:
 As a gift, I created a special feature that generates a number between 0 and 1000.
 This special feature is just to test the access to the endpoint route.
+
     http://127.0.0.1:5001/random-number 
-    
-## 2 - Endpoint route for a dictionary of all presidential speeches:
+
+## 2 - Endpoint route for a dictionary of all presidential speeches:
 Query all US presidential speeches ever spoken until september 2019, ordered chronologically.
+
     http://127.0.0.1:5001/speeches
     
-## 3 - Endpoint route for a dictionary of all the Presidents:
+## 3 - Endpoint route for a dictionary of all the Presidents:
 Query all US presidents until september 2019, ordered alphabetically.
+
     http://127.0.0.1:5001/presidents
     
 ## 4 - Endpoint route for a dictionary of all the Parties:
