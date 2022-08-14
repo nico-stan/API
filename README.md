@@ -27,22 +27,27 @@ Query all US presidents until september 2019, ordered alphabetically.
 
     http://127.0.0.1:5001/presidents
     
-## 4 - Endpoint route for a dictionary of all the Parties:
+## 4 - Endpoint route for a dictionary of all the Parties:
 Query all US Parties until september 2019, ordered alphabetically.
+
     http://127.0.0.1:5001/parties
     
-## 5 - Endpoint route for a Polarity Score of a given President.
+## 5 - Endpoint route for a Polarity Score of a given President.
 Combines all speeches ever spoken by a given President and shows its polarity score.
+
     http://127.0.0.1:5001/sentiment/president/<president>
   
-## 6 - Endpoint route for a Polarity Score of a given Party.
+## 6 - Endpoint route for a Polarity Score of a given Party.
 Combines all speeches ever spoken by a given Party and shows its polarity score.
+
     http://127.0.0.1:5001/sentiment/party/<party>
     
-## 7 - Endpoint route for translating:
+## 7 - Endpoint route for translating:
 ...
+
     http://127.0.0.1:5001/one/<name>
 
 ## 8 - Endpoint route for posting:
 Inserts a new line in the database.
+ 
     http://127.0.0.1:5001/newline
