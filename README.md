@@ -20,7 +20,7 @@ This special feature is just to test the access to the endpoint route.
 ## 3 - Endpoint route for a dictionary of all presidential speeches:
 Query all US presidential speeches ever spoken until september 2019, ordered chronologically.
 
-    http://127.0.0.1:5001/speeches
+    http://127.0.0.1:5001//speeches
     
 ## 4 - Endpoint route for a dictionary of all the Presidents:
 Query all US presidents until september 2019, ordered alphabetically.
