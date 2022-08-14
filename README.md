@@ -1,6 +1,11 @@
+# Project IV My API
+## API - SQL query for US Presidential Speeches
 
-# Flask API for data handling
-One GET method and one POST method: getting info and inserting into a DB
+By: Nicolas Stambolsky
+Date: August, 15th 2022
+
+![Screenshot](https://github.com/nico-stan/Project-IV/blob/main/images/waving_eagle.gif)
+________________________________________________
 
 # How does it work?
 
