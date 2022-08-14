@@ -42,12 +42,7 @@ Combines all speeches ever spoken by a given Party and shows its polarity score.
 
     http://127.0.0.1:5001/sentiment/party/<party>
     
-## 7 - Endpoint route for translating:
-...
-
-    http://127.0.0.1:5001/one/<name>
-
-## 8 - Endpoint route for posting:
+## 7 - Endpoint route for posting:
 Inserts a new line in the database.
  
     http://127.0.0.1:5001/newline
