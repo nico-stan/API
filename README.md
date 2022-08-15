@@ -32,17 +32,27 @@ Query all US Parties until september 2019, ordered alphabetically.
 
     http://127.0.0.1:5001/parties
     
-## 6 - Endpoint route for a Polarity Score of a given President.
+## 6 - Endpoint route for a given President.
+Query all speeches ever spoken by a given President.
+
+    http://127.0.0.1:5001/president/<president>
+  
+## 7 - Endpoint route for a given Party.
+Query all speeches ever spoken by a given Party.
+
+    http://127.0.0.1:5001/party/<party>
+    
+## 8 - Endpoint route for a Polarity Score of a given President.
 Combines all speeches ever spoken by a given President and shows its polarity score.
 
     http://127.0.0.1:5001/sentiment/president/<president>
   
-## 7 - Endpoint route for a Polarity Score of a given Party.
+## 9 - Endpoint route for a Polarity Score of a given Party.
 Combines all speeches ever spoken by a given Party and shows its polarity score.
 
     http://127.0.0.1:5001/sentiment/party/<party>
     
-## 8 - Endpoint route for posting:
+## 10 - Endpoint route for posting:
 Inserts a new line in the database.
  
     http://127.0.0.1:5001/post
