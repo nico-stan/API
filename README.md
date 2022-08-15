@@ -45,4 +45,4 @@ Combines all speeches ever spoken by a given Party and shows its polarity score.
 ## 8 - Endpoint route for posting:
 Inserts a new line in the database.
  
-    http://127.0.0.1:5001/newline
+    http://127.0.0.1:5001/post
