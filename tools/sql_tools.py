@@ -35,8 +35,8 @@ def list_all_parties():
 def insert_new_speech (Year, Date, President, Party, Title, Summary, Transcript, URL):
 
     engine.execute(f"""
-    INSERT INTO Speeches.tablename (Year, Date, President, Party, Title, Summary, Transcript, URL)
-    VALUES ({Year}, '{Date}', '{President}', '{Party}', '{Title}', '{Summary}', '{Transcript}, '{URL}');
+    INSERT INTO Speeches.tablename (Year, Date, President, Party, `Speech Title`, Summary, Transcript, URL)
+    VALUES ({Year}, '{Date}', '{President}', '{Party}', '{Title}', '{Summary}', '{Transcript}', '{URL}');
     """)
-    
-    return f"Correctly introduced: {Year}, {Date}, {President}, {Party}, '{Title}, '{Summary}, {Transcript}, {URL}"
+
+    return f"Correctly introduced: {Year}, {Date}, {President}, {Party}, {Title}, {Summary}, {Transcript}, {URL}"
