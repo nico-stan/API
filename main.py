@@ -1,18 +1,24 @@
-from os import name
 from flask import Flask, request, jsonify
-import markdown.extensions.fenced_code
+from  googletrans import Translator
 import json
-import random
-import googletrans
-# import tools.mongo_tools as mongo
-import tools.sql_tools as sql
+import markdown.extensions.fenced_code
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from os import name
 import pandas as pd
+import random
+import requests
+import tools.sql_tools as sql
+import statistics as st
+import string
+from textblob import TextBlob
+
+
+# import tools.mongo_tools as mongo
 # from nltk.corpus import stopwords
 # nltk.download('stopwords')
 # stop_words = stopwords.words('english')
 # from collections import Counter, OrderedDict
-
-
 
 
 app = Flask(__name__)
@@ -24,9 +30,10 @@ def index():
     md_template = markdown.markdown(readme_file.read(), extensions = ["fenced_code"])
     return md_template
 
-#we created a special feature that generates a number between 0 and 1000 to test the program
+# I created a special feature that generates a number between 0 and 1000 to test the program
 @app.route("/random-number") 
 def random_number():
+
     return str(random.choice(range(0,1000)))
 
 # Get everything: SQL
@@ -46,14 +53,29 @@ def list_all_presidents():
 def list_all_parties():
     return jsonify(sql.list_all_parties())
 
+# Get all the speeches from a given President and use a condition: SQL, argument & params
+# it contains the parameters for language translator
+@app.route("/president/<president>")
+def get_president(president):
+    all = sql.get_everything_from_president(president)
+   
+    if 'language' in request.args.keys():
+        language = request.args["language"]
+        for i in all[:5]:
+            trans = Translator()
+            i["Summary"] = trans.translate(i["Summary"], dest=language).text
+    return jsonify(all)
 
+
+# Get all the speeches from a given Party.
+@app.route("/party/<party>")
+def get_everything_from_party(party):
+    return jsonify(sql.get_everything_from_party(president))
+
+# Get the Polarity Score of a given President.
 @app.route("/sentiment/president/<president>")
 def get_sentiment_president(president):
-    import nltk
-    from nltk.sentiment.vader import SentimentIntensityAnalyzer
-    import statistics as st
-    import string
-    from textblob import TextBlob
+
     alphabet = string.ascii_letters+" '"+string.digits
 
     sese = jsonify(sql.get_everything_from_president(president)) 
@@ -89,13 +111,9 @@ def get_sentiment_president(president):
         return "No polarity detected for {president}'s Speeches"
 
 
+# Get the Polarity Score of a given Party.
 @app.route("/sentiment/party/<party>")
 def get_sentiment_party(party):
-    import nltk
-    from nltk.sentiment.vader import SentimentIntensityAnalyzer
-    import statistics as st
-    import string
-    from textblob import TextBlob
     alphabet = string.ascii_letters+" '"+string.digits
 
     sese = jsonify(sql.get_everything_from_party(party)) 
@@ -130,24 +148,11 @@ def get_sentiment_party(party):
     else:
         return "No polarity detected for {party}'s Speeches"
 
-# Get everything FROM someone AND use a condition: SQL, argument & params
-@app.route("/one/<name>")
-def one_random_language (name):
-    frases = mongo.all_sentences(name)
-    one = random.choice(frases)
-
-    language = request.args["language"]
-    trans = googletrans.Translator()
-    result = trans.translate(one["dialogue"], dest=language)
-
-    one["dialogue"] = result.text
-    
-    return one
 
 
 ## POST
-@app.route("/newline", methods=["POST"])
-def insert_new_speech():
+@app.route("/post", methods=["POST"])
+def new_speech():
     Year = request.form.get("Year")
     Date = request.form.get("Date")
     President = request.form.get("President")
